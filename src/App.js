@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onGetNewQuote = this.onGetNewQuote.bind(this);
+    this.state = {
+      quote: {}
+    }
+  }
+
+  onGetNewQuote(){
+    // alert("life is great")
+    fetch('https://api.quotable.io/random')
+    .then((response)=> {
+      return response.json()
+    })
+    .then((data) => {
+      this.setState(() => {
+        return {quote: data}
+      });
+      
+      
+      
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Quotes quote = {this.state.quote}
+          onGetNewQuote = {this.onGetNewQuote}
+        />
+      </div>
+    )
+  }
 }
 
+
+
+  const Quotes =(props) => {
+    return (
+      <div id="quote-box">
+      <p id="text">{props.quote.author}</p>
+      <p id="author">{props.quote.content}</p>
+      <button onClick={props.onGetNewQuote}>New quote</button>
+
+    </div>
+    )
+  }
 export default App;
