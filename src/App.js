@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,12 +40,29 @@ class App extends React.Component {
 
   const Quotes =(props) => {
     return (
-      <div id="quote-box">
-      <p id="text">{props.quote.author}</p>
-      <p id="author">{props.quote.content}</p>
-      <button onClick={props.onGetNewQuote}>New quote</button>
+      <article id="quote-box" className="container">
+        <div className="card">
+          <div className="card-body card-info">
+            <q className="card-text" id="text">
+              {props.quote.content}
+            </q>
+            <p className="card-text" id="author">
+              {props.quote.author}
+            </p>
+          </div>
+          <div className="card-bottom">
+            <a href="#a" className="card-link">Facebook</a>
+            <a href="#a" className="card-link" id="tweet-quote">Tweeter</a>
+            <button 
+              onClick={props.onGetNewQuote}
+              id="new-quote"
+            >
+              New quote
+            </button>
+          </div>
+        </div>
 
-    </div>
+      </article>
     )
   }
 export default App;
