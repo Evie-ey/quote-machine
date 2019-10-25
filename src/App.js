@@ -1,4 +1,5 @@
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 class App extends React.Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App" style={{backgroundColor:this.state.theColor}}>
+      <div className="app" style={{backgroundColor:this.state.theColor}}>
         <Quotes quote = {this.state.quote}
           onGetNewQuote = {this.onGetNewQuote}
           theColor = {this.state.theColor}
@@ -78,30 +79,37 @@ class App extends React.Component {
 
   const {backgroundStyle, colorStyle} = styles;
     return (
-      <article id="quote-box" className="container">
-        <div className="card">
-          <div className="card-body card-info" style={colorStyle}>
-            <q className="card-text" id="text">
-              {props.quote.content}
-            </q>
-            <p className="card-text" id="author">
-              {props.quote.author}
-            </p>
-          </div>
-          <div className="card-bottom">
-            <a href="#a" className="card-link">Facebook</a>
-            <a href="#a" className="card-link" id="tweet-quote">Tweeter</a>
-            <button 
-              onClick={props.onGetNewQuote}
-              id="new-quote"
-              style={backgroundStyle}
-            >
-              New quote
-            </button>
-          </div>
+      <div className="container quote-wrapper">
+        <div className="row">
+          <div className="col-sm-10 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <article  id="quote-box" >
+              <div className="quote" style={colorStyle}>
+                <q id="text">
+                  {props.quote.content}
+                </q>
+                <p id="author">
+                  {props.quote.author}
+                </p>
+              </div>
+              <div className="quote-buttons">
+                <a href="#a" className="card-link" id="facebook-quote" style={colorStyle}>
+                  <FontAwesomeIcon icon={['fab', 'facebook']} size="lg" />
+                </a>
+                <a href="#a" className="card-link" id="tweet-quote" style={colorStyle}>
+                  <FontAwesomeIcon icon={['fab', 'twitter']} size="lg" />
+                </a>
+                <button 
+                  onClick={props.onGetNewQuote}
+                  id="new-quote"
+                  style={backgroundStyle}
+                >
+                  New quote
+                </button>
+              </div>
+            </article>
+            </div>
         </div>
-
-      </article>
+      </div>
     )
   }
 export default App;
