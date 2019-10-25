@@ -95,7 +95,10 @@ class App extends React.Component {
                 <a href="#a" className="card-link" id="facebook-quote" style={colorStyle}>
                   <FontAwesomeIcon icon={['fab', 'facebook']} size="lg" />
                 </a>
-                <a href="#a" className="card-link" id="tweet-quote" style={colorStyle}>
+                <a href={"https://twitter.com/intent/tweet?text="+ props.quote.content + props.quote.author} className="card-link" 
+                    id="tweet-quote" style={colorStyle}
+                    target="_blank" rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={['fab', 'twitter']} size="lg" />
                 </a>
                 <button 
